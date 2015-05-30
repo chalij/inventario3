@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.DetalleRequisicion" table="DETALLE_REQUISICION" schema="INVENTARIO" optimistic-lock="version">
+        <id name="idDeastalleRequisicion" type="int">
+            <column name="ID_DEASTALLE_REQUISICION" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="requisicion" class="model.Requisicion" fetch="select">
+            <column name="ID_REQUISICION" precision="6" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="cantidad" type="big_decimal">
+            <column name="CANTIDAD" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="detalleProductos" table="DETALLE_PRODUCTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_DETALLE_REQUISICION" precision="6" scale="0" />
+            </key>
+            <one-to-many class="model.DetalleProducto" />
+        </set>
+    </class>
+</hibernate-mapping>

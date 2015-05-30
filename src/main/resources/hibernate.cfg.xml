@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+    <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+    <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+    <property name="hibernate.connection.username">inventario</property>
+    <property name="hibernate.connection.password">inventario</property>
+    <mapping resource="model/Transaccion.hbm.xml"/>
+    <mapping resource="model/Recursos.hbm.xml"/>
+    <mapping resource="model/DetalleRequisicion.hbm.xml"/>
+    <mapping resource="model/Cotizacion.hbm.xml"/>
+    <mapping resource="model/Telefono.hbm.xml"/>
+    <mapping resource="model/TipoProducto.hbm.xml"/>
+    <mapping resource="model/DetalleDevolucion.hbm.xml"/>
+    <mapping resource="model/OrdenDeCompra.hbm.xml"/>
+    <mapping resource="model/DetallePedido.hbm.xml"/>
+    <mapping resource="model/Bodega.hbm.xml"/>
+    <mapping resource="model/TipoTransaccion.hbm.xml"/>
+    <mapping resource="model/Proveedor.hbm.xml"/>
+    <mapping resource="model/TipoCliente.hbm.xml"/>
+    <mapping resource="model/Cliente.hbm.xml"/>
+    <mapping resource="model/Requisicion.hbm.xml"/>
+    <mapping resource="model/TipoProveedor.hbm.xml"/>
+    <mapping resource="model/TipoDevolucion.hbm.xml"/>
+    <mapping resource="model/DetalleProducto.hbm.xml"/>
+    <mapping resource="model/Usuario.hbm.xml"/>
+    <mapping resource="model/Inventario.hbm.xml"/>
+    <mapping resource="model/Lote.hbm.xml"/>
+    <mapping resource="model/Devolucion.hbm.xml"/>
+    <mapping resource="model/TipoUsuario.hbm.xml"/>
+    <mapping resource="model/Pedido.hbm.xml"/>
+    <mapping resource="model/DetalleDeOrdenCompra.hbm.xml"/>
+    <mapping resource="model/Persona.hbm.xml"/>
+    <mapping resource="model/Empleado.hbm.xml"/>
+    <mapping resource="model/Producto.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

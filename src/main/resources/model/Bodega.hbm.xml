@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Bodega" table="BODEGA" schema="INVENTARIO" optimistic-lock="version">
+        <id name="idBodega" type="int">
+            <column name="ID_BODEGA" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="cantidadPasillos" type="big_decimal">
+            <column name="CANTIDAD_PASILLOS" precision="22" scale="0" />
+        </property>
+        <property name="estantesPorPasillo" type="big_decimal">
+            <column name="ESTANTES_POR_PASILLO" precision="22" scale="0" />
+        </property>
+        <property name="nombre2" type="string">
+            <column name="NOMBRE2" length="30" not-null="true" />
+        </property>
+        <property name="catidadEstante" type="big_decimal">
+            <column name="CATIDAD_ESTANTE" precision="22" scale="0" />
+        </property>
+        <property name="productoPorEstante" type="big_decimal">
+            <column name="PRODUCTO_POR_ESTANTE" precision="22" scale="0" />
+        </property>
+        <property name="ubicacion" type="string">
+            <column name="UBICACION" length="150" not-null="true" />
+        </property>
+        <set name="lotes" table="LOTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_BODEGA" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.Lote" />
+        </set>
+        <set name="inventarios" table="INVENTARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_BODEGA" precision="6" scale="0" />
+            </key>
+            <one-to-many class="model.Inventario" />
+        </set>
+    </class>
+</hibernate-mapping>

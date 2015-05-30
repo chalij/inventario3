@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Persona" table="PERSONA" schema="INVENTARIO" optimistic-lock="version">
+        <id name="idPersona" type="int">
+            <column name="ID_PERSONA" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="model.Usuario" fetch="select">
+            <column name="ID_USUARIO" precision="6" scale="0" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="55" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="APELLIDO" length="55" not-null="true" />
+        </property>
+        <property name="genero" type="char">
+            <column name="GENERO" length="1" not-null="true" />
+        </property>
+        <property name="dui" type="string">
+            <column name="DUI" length="10" not-null="true" />
+        </property>
+        <property name="nit" type="string">
+            <column name="NIT" length="17" not-null="true" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="FECHA_NAC" length="7" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="150" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="CORREO" length="80" />
+        </property>
+        <set name="empleados" table="EMPLEADO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PERSONA" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.Empleado" />
+        </set>
+        <set name="proveedors" table="PROVEEDOR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PERSONA" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.Proveedor" />
+        </set>
+        <set name="clientes" table="CLIENTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PERSONA" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.Cliente" />
+        </set>
+        <set name="telefonos" table="TELEFONO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PERSONA" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.Telefono" />
+        </set>
+    </class>
+</hibernate-mapping>

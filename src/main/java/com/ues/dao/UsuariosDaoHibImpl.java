@@ -16,12 +16,12 @@ public class UsuariosDaoHibImpl extends CustomHibernateDaoSupport implements Usu
     }
 
     public Usuario buscaUsuario(String username) throws DAOException {
-        List list = getHibernateTemplate().find(" from UsuarioObj WHERE USERNAME=?",username);
+        List list = getHibernateTemplate().find(" from Usuario WHERE USERNAME=?",username);
         return (Usuario) list.get(0);
     }
 
     public List<Usuario> listaUsuarios() throws DAOException {
-        List<Usuario> lista = getHibernateTemplate().find("from UsuarioObj");
+        List<Usuario> lista = getHibernateTemplate().find("from Usuario");
         return lista;
     }
 

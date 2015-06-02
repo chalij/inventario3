@@ -17,34 +17,11 @@
         
         <property name="mappingResources">
             <list>
-    <!--<mapping resource="model/Transaccion.hbm.xml"/>
-    <mapping resource="model/Recursos.hbm.xml"/>
-    <mapping resource="model/DetalleRequisicion.hbm.xml"/>
-    <mapping resource="model/Cotizacion.hbm.xml"/>
-    <mapping resource="model/Telefono.hbm.xml"/>
-    <mapping resource="model/TipoProducto.hbm.xml"/>
-    <mapping resource="model/DetalleDevolucion.hbm.xml"/>
-    <mapping resource="model/OrdenDeCompra.hbm.xml"/>
-    <mapping resource="model/DetallePedido.hbm.xml"/>
-    <mapping resource="model/Bodega.hbm.xml"/>
-    <mapping resource="model/TipoTransaccion.hbm.xml"/>
-    <mapping resource="model/Proveedor.hbm.xml"/>
-    <mapping resource="model/TipoCliente.hbm.xml"/>
-    <mapping resource="model/Cliente.hbm.xml"/>
-    <mapping resource="model/Requisicion.hbm.xml"/>
-    <mapping resource="model/TipoProveedor.hbm.xml"/>
-    <mapping resource="model/TipoDevolucion.hbm.xml"/>
-    <mapping resource="model/DetalleProducto.hbm.xml"/>
-    <mapping resource="model/Usuario.hbm.xml"/>
-    <mapping resource="model/Inventario.hbm.xml"/>
-    <mapping resource="model/Lote.hbm.xml"/>
-    <mapping resource="model/Devolucion.hbm.xml"/>
-    <mapping resource="model/TipoUsuario.hbm.xml"/>
-    <mapping resource="model/Pedido.hbm.xml"/>
-    <mapping resource="model/DetalleDeOrdenCompra.hbm.xml"/>
-    <mapping resource="model/Persona.hbm.xml"/>
-    <mapping resource="model/Empleado.hbm.xml"/>
-    <mapping resource="model/Producto.hbm.xml"/>-->
+    <!--
+INSERT INTO usuario VALUES (2,1,'Joy','123','02-02-2015',null);
+INSERT INTO usuario VALUES (3,1,'Samuel','123','02-02-2015',null);
+commit;
+                -->
                 <value>Transaccion.hbm.xml</value>
                 <value>Recursos.hbm.xml</value>
                 <value>DetalleRequisicion.hbm.xml</value>

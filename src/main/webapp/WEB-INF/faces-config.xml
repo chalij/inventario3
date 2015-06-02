@@ -12,13 +12,14 @@
 
     <managed-bean>
         <managed-bean-name>usuariosBean</managed-bean-name>
-        <managed-bean-class>bean.UsuariosBean</managed-bean-class>
+        <managed-bean-class>com.ues.bean.UsuariosBean</managed-bean-class>
     
         <managed-bean-scope>session</managed-bean-scope>
-         <managed-property>
+        <managed-property>
             <property-name>usuariosDao</property-name>
-            <property-class>dao.UsuariosDao</property-class>
+            <property-class>com.ues.dao.UsuariosDao</property-class>
             <value>#{usuariosDao}</value>
-        </managed-property></managed-bean>
+        </managed-property>
+    </managed-bean>
     
 </faces-config>

@@ -1,18 +1,17 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Telefono" table="TELEFONO" schema="INVENTARIO" optimistic-lock="version">
-        <id name="idTelefono" type="int">
-            <column name="ID_TELEFONO" precision="6" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="persona" class="model.Persona" fetch="select">
-            <column name="ID_PERSONA" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="numTelefono" type="string">
-            <column name="NUM_TELEFONO" length="256" not-null="true" />
-        </property>
-    </class>
+  <class name="com.ues.model.Telefono" optimistic-lock="version" schema="INVENTARIO" table="TELEFONO">
+    <id name="idTelefono" type="int">
+      <column name="ID_TELEFONO" precision="6" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.ues.model.Persona" fetch="select" name="persona">
+      <column name="ID_PERSONA" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <property name="numTelefono" type="string">
+      <column length="256" name="NUM_TELEFONO" not-null="true"/>
+    </property>
+  </class>
 </hibernate-mapping>

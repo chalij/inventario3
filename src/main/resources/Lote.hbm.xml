@@ -1,24 +1,23 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Lote" table="LOTE" schema="INVENTARIO" optimistic-lock="version">
-        <id name="idLote" type="int">
-            <column name="ID_LOTE" precision="6" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="producto" class="model.Producto" fetch="select">
-            <column name="ID_PRODUCTO" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="bodega" class="model.Bodega" fetch="select">
-            <column name="ID_BODEGA" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="cantidad" type="big_decimal">
-            <column name="CANTIDAD" precision="22" scale="0" not-null="true" />
-        </property>
-        <property name="descripcion" type="string">
-            <column name="DESCRIPCION" length="150" />
-        </property>
-    </class>
+  <class name="com.ues.model.Lote" optimistic-lock="version" schema="INVENTARIO" table="LOTE">
+    <id name="idLote" type="int">
+      <column name="ID_LOTE" precision="6" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.ues.model.Producto" fetch="select" name="producto">
+      <column name="ID_PRODUCTO" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.Bodega" fetch="select" name="bodega">
+      <column name="ID_BODEGA" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <property name="cantidad" type="big_decimal">
+      <column name="CANTIDAD" not-null="true" precision="22" scale="0"/>
+    </property>
+    <property name="descripcion" type="string">
+      <column length="150" name="DESCRIPCION"/>
+    </property>
+  </class>
 </hibernate-mapping>

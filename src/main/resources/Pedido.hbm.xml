@@ -1,30 +1,29 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Pedido" table="PEDIDO" schema="INVENTARIO" optimistic-lock="version">
-        <id name="idPedido" type="int">
-            <column name="ID_PEDIDO" precision="6" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="empleado" class="model.Empleado" fetch="select">
-            <column name="ID_EMPLEADO" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="fechaPedido" type="date">
-            <column name="FECHA_PEDIDO" length="7" not-null="true" />
-        </property>
-        <set name="detallePedidos" table="DETALLE_PEDIDO" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_PEDIDO" precision="6" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="model.DetallePedido" />
-        </set>
-        <set name="cotizacions" table="COTIZACION" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_PEDIDO" precision="6" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="model.Cotizacion" />
-        </set>
-    </class>
+  <class name="com.ues.model.Pedido" optimistic-lock="version" schema="INVENTARIO" table="PEDIDO">
+    <id name="idPedido" type="int">
+      <column name="ID_PEDIDO" precision="6" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.ues.model.Empleado" fetch="select" name="empleado">
+      <column name="ID_EMPLEADO" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <property name="fechaPedido" type="date">
+      <column length="7" name="FECHA_PEDIDO" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="detallePedidos" table="DETALLE_PEDIDO">
+      <key>
+        <column name="ID_PEDIDO" not-null="true" precision="6" scale="0"/>
+      </key>
+      <one-to-many class="com.ues.model.DetallePedido"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="cotizacions" table="COTIZACION">
+      <key>
+        <column name="ID_PEDIDO" not-null="true" precision="6" scale="0"/>
+      </key>
+      <one-to-many class="com.ues.model.Cotizacion"/>
+    </set>
+  </class>
 </hibernate-mapping>

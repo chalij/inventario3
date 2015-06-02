@@ -1,21 +1,20 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.DetallePedido" table="DETALLE_PEDIDO" schema="INVENTARIO" optimistic-lock="version">
-        <id name="idDetallePedido" type="int">
-            <column name="ID_DETALLE_PEDIDO" precision="6" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="producto" class="model.Producto" fetch="select">
-            <column name="ID_PRODUCTO" precision="6" scale="0" />
-        </many-to-one>
-        <many-to-one name="pedido" class="model.Pedido" fetch="select">
-            <column name="ID_PEDIDO" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="cantidad" type="big_decimal">
-            <column name="CANTIDAD" precision="22" scale="0" not-null="true" />
-        </property>
-    </class>
+  <class name="com.ues.model.DetallePedido" optimistic-lock="version" schema="INVENTARIO" table="DETALLE_PEDIDO">
+    <id name="idDetallePedido" type="int">
+      <column name="ID_DETALLE_PEDIDO" precision="6" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.ues.model.Producto" fetch="select" name="producto">
+      <column name="ID_PRODUCTO" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.Pedido" fetch="select" name="pedido">
+      <column name="ID_PEDIDO" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <property name="cantidad" type="big_decimal">
+      <column name="CANTIDAD" not-null="true" precision="22" scale="0"/>
+    </property>
+  </class>
 </hibernate-mapping>

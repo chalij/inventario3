@@ -1,27 +1,26 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Transaccion" table="TRANSACCION" schema="INVENTARIO" optimistic-lock="version">
-        <id name="idTransaccion" type="int">
-            <column name="ID_TRANSACCION" precision="6" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="tipoTransaccion" class="model.TipoTransaccion" fetch="select">
-            <column name="ID_TIPO_TRANSACCION" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="inventario" class="model.Inventario" fetch="select">
-            <column name="ID_INVENTARIO" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="devolucion" class="model.Devolucion" fetch="select">
-            <column name="ID_DEVOLUCION" precision="6" scale="0" />
-        </many-to-one>
-        <many-to-one name="requisicion" class="model.Requisicion" fetch="select">
-            <column name="ID_REQUISICION" precision="6" scale="0" />
-        </many-to-one>
-        <many-to-one name="ordenDeCompra" class="model.OrdenDeCompra" fetch="select">
-            <column name="ID_ORDEN" precision="6" scale="0" />
-        </many-to-one>
-    </class>
+  <class name="com.ues.model.Transaccion" optimistic-lock="version" schema="INVENTARIO" table="TRANSACCION">
+    <id name="idTransaccion" type="int">
+      <column name="ID_TRANSACCION" precision="6" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.ues.model.TipoTransaccion" fetch="select" name="tipoTransaccion">
+      <column name="ID_TIPO_TRANSACCION" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.Inventario" fetch="select" name="inventario">
+      <column name="ID_INVENTARIO" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.Devolucion" fetch="select" name="devolucion">
+      <column name="ID_DEVOLUCION" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.Requisicion" fetch="select" name="requisicion">
+      <column name="ID_REQUISICION" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.OrdenDeCompra" fetch="select" name="ordenDeCompra">
+      <column name="ID_ORDEN" precision="6" scale="0"/>
+    </many-to-one>
+  </class>
 </hibernate-mapping>

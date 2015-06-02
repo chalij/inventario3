@@ -7,7 +7,7 @@
 
     <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL" /> 
+        <property name="url" value="jdbc:oracle:thin:@localhost:1522:XE" /> 
         <property name="username" value="inventario"/>
         <property name="password" value="inventario"/>
     </bean>
@@ -63,6 +63,7 @@
                 <value>TipoProveedor.hbm.xml</value>
                 <value>TipoDevolucion.hbm.xml</value>
                 <value>DetalleProducto.hbm.xml</value>
+                <value>Usuario.hbm.xml</value>
                 <value>Inventario.hbm.xml</value>
                 <value>Lote.hbm.xml</value>
                 <value>Devolucion.hbm.xml</value>
@@ -84,7 +85,7 @@
         
     </bean>
     
-    <bean id="usuariosDao" class="dao.UsuariosDaoHibImpl">
+    <bean id="usuariosDao" class="com.ues.dao.UsuariosDaoHibImpl">
         <property name="sessionFactory" ref="mySessionFactory"/>
     </bean>
     

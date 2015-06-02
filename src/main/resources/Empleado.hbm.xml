@@ -1,42 +1,41 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Empleado" table="EMPLEADO" schema="INVENTARIO" optimistic-lock="version">
-        <id name="idEmpleado" type="int">
-            <column name="ID_EMPLEADO" precision="6" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="persona" class="model.Persona" fetch="select">
-            <column name="ID_PERSONA" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <property name="rol" type="string">
-            <column name="ROL" length="15" not-null="true" />
-        </property>
-        <set name="requisicions" table="REQUISICION" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_EMPLEADO" precision="6" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="model.Requisicion" />
-        </set>
-        <set name="pedidos" table="PEDIDO" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_EMPLEADO" precision="6" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="model.Pedido" />
-        </set>
-        <set name="inventarios" table="INVENTARIO" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_EMPLEADO" precision="6" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="model.Inventario" />
-        </set>
-        <set name="ordenDeCompras" table="ORDEN_DE_COMPRA" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_EMPLEADO" precision="6" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="model.OrdenDeCompra" />
-        </set>
-    </class>
+  <class name="com.ues.model.Empleado" optimistic-lock="version" schema="INVENTARIO" table="EMPLEADO">
+    <id name="idEmpleado" type="int">
+      <column name="ID_EMPLEADO" precision="6" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.ues.model.Persona" fetch="select" name="persona">
+      <column name="ID_PERSONA" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <property name="rol" type="string">
+      <column length="15" name="ROL" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="requisicions" table="REQUISICION">
+      <key>
+        <column name="ID_EMPLEADO" not-null="true" precision="6" scale="0"/>
+      </key>
+      <one-to-many class="com.ues.model.Requisicion"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="pedidos" table="PEDIDO">
+      <key>
+        <column name="ID_EMPLEADO" not-null="true" precision="6" scale="0"/>
+      </key>
+      <one-to-many class="com.ues.model.Pedido"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="inventarios" table="INVENTARIO">
+      <key>
+        <column name="ID_EMPLEADO" not-null="true" precision="6" scale="0"/>
+      </key>
+      <one-to-many class="com.ues.model.Inventario"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="ordenDeCompras" table="ORDEN_DE_COMPRA">
+      <key>
+        <column name="ID_EMPLEADO" not-null="true" precision="6" scale="0"/>
+      </key>
+      <one-to-many class="com.ues.model.OrdenDeCompra"/>
+    </set>
+  </class>
 </hibernate-mapping>

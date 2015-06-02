@@ -1,42 +1,41 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="model.Devolucion" table="DEVOLUCION" schema="INVENTARIO" optimistic-lock="version">
-        <id name="idDevolucion" type="int">
-            <column name="ID_DEVOLUCION" precision="6" scale="0" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="tipoDevolucion" class="model.TipoDevolucion" fetch="select">
-            <column name="ID_TIPO_DEVOLUCION" precision="6" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="requisicion" class="model.Requisicion" fetch="select">
-            <column name="ID_REQUISICION" precision="6" scale="0" />
-        </many-to-one>
-        <many-to-one name="ordenDeCompra" class="model.OrdenDeCompra" fetch="select">
-            <column name="ID_ORDEN" precision="6" scale="0" />
-        </many-to-one>
-        <many-to-one name="proveedor" class="model.Proveedor" fetch="select">
-            <column name="ID_PROVEEDOR" precision="6" scale="0" />
-        </many-to-one>
-        <many-to-one name="cliente" class="model.Cliente" fetch="select">
-            <column name="ID_CLIENTE" precision="6" scale="0" />
-        </many-to-one>
-        <property name="cantidad" type="big_decimal">
-            <column name="CANTIDAD" precision="22" scale="0" not-null="true" />
-        </property>
-        <set name="detalleDevolucions" table="DETALLE_DEVOLUCION" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_DEVOLUCION" precision="6" scale="0" not-null="true" />
-            </key>
-            <one-to-many class="model.DetalleDevolucion" />
-        </set>
-        <set name="transaccions" table="TRANSACCION" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_DEVOLUCION" precision="6" scale="0" />
-            </key>
-            <one-to-many class="model.Transaccion" />
-        </set>
-    </class>
+  <class name="com.ues.model.Devolucion" optimistic-lock="version" schema="INVENTARIO" table="DEVOLUCION">
+    <id name="idDevolucion" type="int">
+      <column name="ID_DEVOLUCION" precision="6" scale="0"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.ues.model.TipoDevolucion" fetch="select" name="tipoDevolucion">
+      <column name="ID_TIPO_DEVOLUCION" not-null="true" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.Requisicion" fetch="select" name="requisicion">
+      <column name="ID_REQUISICION" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.OrdenDeCompra" fetch="select" name="ordenDeCompra">
+      <column name="ID_ORDEN" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.Proveedor" fetch="select" name="proveedor">
+      <column name="ID_PROVEEDOR" precision="6" scale="0"/>
+    </many-to-one>
+    <many-to-one class="com.ues.model.Cliente" fetch="select" name="cliente">
+      <column name="ID_CLIENTE" precision="6" scale="0"/>
+    </many-to-one>
+    <property name="cantidad" type="big_decimal">
+      <column name="CANTIDAD" not-null="true" precision="22" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="detalleDevolucions" table="DETALLE_DEVOLUCION">
+      <key>
+        <column name="ID_DEVOLUCION" not-null="true" precision="6" scale="0"/>
+      </key>
+      <one-to-many class="com.ues.model.DetalleDevolucion"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="transaccions" table="TRANSACCION">
+      <key>
+        <column name="ID_DEVOLUCION" precision="6" scale="0"/>
+      </key>
+      <one-to-many class="com.ues.model.Transaccion"/>
+    </set>
+  </class>
 </hibernate-mapping>

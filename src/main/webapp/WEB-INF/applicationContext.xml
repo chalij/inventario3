@@ -1,25 +1,91 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <!--bean id="propertyConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="/WEB-INF/jdbc.properties" />
-
-<bean id="dataSource"
-    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-    p:driverClassName="${jdbc.driverClassName}"
-    p:url="${jdbc.url}"
-    p:username="${jdbc.username}"
-    p:password="${jdbc.password}" /-->
-
-    <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
-
+    <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL" /> 
+        <property name="username" value="inventario"/>
+        <property name="password" value="inventario"/>
+    </bean>
+ 
+    <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        
+        <property name="mappingResources">
+            <list>
+    <!--<mapping resource="model/Transaccion.hbm.xml"/>
+    <mapping resource="model/Recursos.hbm.xml"/>
+    <mapping resource="model/DetalleRequisicion.hbm.xml"/>
+    <mapping resource="model/Cotizacion.hbm.xml"/>
+    <mapping resource="model/Telefono.hbm.xml"/>
+    <mapping resource="model/TipoProducto.hbm.xml"/>
+    <mapping resource="model/DetalleDevolucion.hbm.xml"/>
+    <mapping resource="model/OrdenDeCompra.hbm.xml"/>
+    <mapping resource="model/DetallePedido.hbm.xml"/>
+    <mapping resource="model/Bodega.hbm.xml"/>
+    <mapping resource="model/TipoTransaccion.hbm.xml"/>
+    <mapping resource="model/Proveedor.hbm.xml"/>
+    <mapping resource="model/TipoCliente.hbm.xml"/>
+    <mapping resource="model/Cliente.hbm.xml"/>
+    <mapping resource="model/Requisicion.hbm.xml"/>
+    <mapping resource="model/TipoProveedor.hbm.xml"/>
+    <mapping resource="model/TipoDevolucion.hbm.xml"/>
+    <mapping resource="model/DetalleProducto.hbm.xml"/>
+    <mapping resource="model/Usuario.hbm.xml"/>
+    <mapping resource="model/Inventario.hbm.xml"/>
+    <mapping resource="model/Lote.hbm.xml"/>
+    <mapping resource="model/Devolucion.hbm.xml"/>
+    <mapping resource="model/TipoUsuario.hbm.xml"/>
+    <mapping resource="model/Pedido.hbm.xml"/>
+    <mapping resource="model/DetalleDeOrdenCompra.hbm.xml"/>
+    <mapping resource="model/Persona.hbm.xml"/>
+    <mapping resource="model/Empleado.hbm.xml"/>
+    <mapping resource="model/Producto.hbm.xml"/>-->
+                <value>Transaccion.hbm.xml</value>
+                <value>Recursos.hbm.xml</value>
+                <value>DetalleRequisicion.hbm.xml</value>
+                <value>Cotizacion.hbm.xml</value>
+                <value>Telefono.hbm.xml</value>
+                <value>TipoProducto.hbm.xml</value>
+                <value>DetalleDevolucion.hbm.xml</value>
+                <value>OrdenDeCompra.hbm.xml</value>
+                <value>DetallePedido.hbm.xml</value>
+                <value>Bodega.hbm.xml</value>
+                <value>TipoTransaccion.hbm.xml</value>
+                <value>Proveedor.hbm.xml</value>
+                <value>TipoCliente.hbm.xml</value>
+                <value>Cliente.hbm.xml</value>
+                <value>Requisicion.hbm.xml</value>
+                <value>TipoProveedor.hbm.xml</value>
+                <value>TipoDevolucion.hbm.xml</value>
+                <value>DetalleProducto.hbm.xml</value>
+                <value>Inventario.hbm.xml</value>
+                <value>Lote.hbm.xml</value>
+                <value>Devolucion.hbm.xml</value>
+                <value>TipoUsuario.hbm.xml</value>
+                <value>Pedido.hbm.xml</value>
+                <value>DetalleDeOrdenCompra.hbm.xml</value>
+                <value>Persona.hbm.xml</value>
+                <value>Empleado.hbm.xml</value>
+                <value>Producto.hbm.xml</value>
+            </list>
+        </property>
+        
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        
+    </bean>
+    
+    <bean id="usuariosDao" class="dao.UsuariosDaoHibImpl">
+        <property name="sessionFactory" ref="mySessionFactory"/>
+    </bean>
+    
 </beans>

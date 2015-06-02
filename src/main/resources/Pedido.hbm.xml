@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Pedido" table="PEDIDO" schema="INVENTARIO" optimistic-lock="version">
+        <id name="idPedido" type="int">
+            <column name="ID_PEDIDO" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="empleado" class="model.Empleado" fetch="select">
+            <column name="ID_EMPLEADO" precision="6" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="fechaPedido" type="date">
+            <column name="FECHA_PEDIDO" length="7" not-null="true" />
+        </property>
+        <set name="detallePedidos" table="DETALLE_PEDIDO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PEDIDO" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.DetallePedido" />
+        </set>
+        <set name="cotizacions" table="COTIZACION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PEDIDO" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.Cotizacion" />
+        </set>
+    </class>
+</hibernate-mapping>

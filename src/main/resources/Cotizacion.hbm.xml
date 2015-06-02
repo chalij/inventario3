@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Cotizacion" table="COTIZACION" schema="INVENTARIO" optimistic-lock="version">
+        <id name="idCotizacion" type="int">
+            <column name="ID_COTIZACION" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="proveedor" class="model.Proveedor" fetch="select">
+            <column name="ID_PROVEEDOR" precision="6" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pedido" class="model.Pedido" fetch="select">
+            <column name="ID_PEDIDO" precision="6" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="estadoCot" type="big_decimal">
+            <column name="ESTADO_COT" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="ordenDeCompras" table="ORDEN_DE_COMPRA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_COTIZACION" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.OrdenDeCompra" />
+        </set>
+    </class>
+</hibernate-mapping>

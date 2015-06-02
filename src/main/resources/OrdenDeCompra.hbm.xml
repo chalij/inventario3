@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 30-may-2015 11:21:15 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.OrdenDeCompra" table="ORDEN_DE_COMPRA" schema="INVENTARIO" optimistic-lock="version">
+        <id name="idOrden" type="int">
+            <column name="ID_ORDEN" precision="6" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cotizacion" class="model.Cotizacion" fetch="select">
+            <column name="ID_COTIZACION" precision="6" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="empleado" class="model.Empleado" fetch="select">
+            <column name="ID_EMPLEADO" precision="6" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="fechaOrden" type="date">
+            <column name="FECHA_ORDEN" length="7" not-null="true" />
+        </property>
+        <property name="estadoOrden" type="big_decimal">
+            <column name="ESTADO_ORDEN" precision="22" scale="0" not-null="true" />
+        </property>
+        <set name="devolucions" table="DEVOLUCION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ORDEN" precision="6" scale="0" />
+            </key>
+            <one-to-many class="model.Devolucion" />
+        </set>
+        <set name="transaccions" table="TRANSACCION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ORDEN" precision="6" scale="0" />
+            </key>
+            <one-to-many class="model.Transaccion" />
+        </set>
+        <set name="detalleDeOrdenCompras" table="DETALLE_DE_ORDEN_COMPRA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ORDEN" precision="6" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="model.DetalleDeOrdenCompra" />
+        </set>
+    </class>
+</hibernate-mapping>

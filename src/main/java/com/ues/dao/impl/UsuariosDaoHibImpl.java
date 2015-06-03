@@ -4,6 +4,7 @@ import com.ues.model.CustomHibernateDaoSupport;
 import com.ues.dao.UsuariosDao;
 import com.ues.exception.DAOException;
 import com.ues.model.Usuario;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,6 +15,7 @@ public class UsuariosDaoHibImpl extends CustomHibernateDaoSupport implements Usu
 
     
     public void crearUsuario(Usuario usuario) throws DAOException {
+        usuario.setFechaCreacion(new Date());
         getHibernateTemplate().saveOrUpdate(usuario);
     }
 
@@ -28,6 +30,7 @@ public class UsuariosDaoHibImpl extends CustomHibernateDaoSupport implements Usu
     }
 
     public void modificarUsuario(Usuario usuario) throws DAOException {
+        usuario.setFechaModificacion(new Date());
         getHibernateTemplate().update(usuario);
     }
 

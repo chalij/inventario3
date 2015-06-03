@@ -25,69 +25,63 @@
             <br/>
             <h3>Ejemplo de JSF 2.0, Spring 3, Hibernate 3, MySQL</h3>
             <h4>Lista de usuarios del sistema</h4>
-            <h:form id="form">
-                <div>
-                    <h:dataTable value="#{usuariosBean.miLista}" var="usuario" styleClass="tabla" >
-                        <h:column>
-                            <f:facet name="header">
-                                Id
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{usuario.idUsuario}"/>
-                            </div>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                Nombre
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{usuario.nombreUsuario}"/>
-                            </div>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                Username
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{usuario.contrasena}"/>
-                            </div>
-                        </h:column>
-                    </h:dataTable>
-                </div>
+
+            <h:form id="formInsertar">
+                <p:panelGrid columns="2">
+
+                    <!--<p:outputLabel value="Id del usuario" />
+                    <p:inputText value="#{usuariosBean.usuario.idUsuario}"/>
+
+                    <p:outputLabel value="Nombre del usuario" />
+                    <p:inputText value="#{usuariosBean.usuario.nombreUsuario}"/>
+
+                    <p:outputLabel value="Contraseña" />
+                    <p:inputText value="#{usuariosBean.usuario.contrasena}"/>
+
+                    <p:outputLabel value="Tipo Usuario" />
+                    <p:inputText value="#{usuariosBean.usuario.tipoUsuario}"/>
+                    
+                    <p:outputLabel value="fecha Creacion" />
+                    <p:inputText value="#{usuariosBean.usuario.fechaCreacion}"/>-->
+
+                </p:panelGrid>
+
+                <p:commandButton actionListener="#{usuariosBean.addUsuario}" value="Ingresar Usuario"/>
+
             </h:form>
-            
-            
-        <h:form>
-            <p:dataTable id="tbl" var="usuario" value="#{usuariosBean.miLista}"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
-                         paginator="true" rows="10" style="margin-bottom:20px">
+
+
+            <h:form>
+                <p:dataTable id="tbl" var="usuario" value="#{usuariosBean.miLista}"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
+                             paginator="true" rows="10" style="margin-bottom:20px">
 
 
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Id" />
-                    </f:facet>
-                    <h:outputText value="#{usuario.idUsuario}" />
-                </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id" />
+                        </f:facet>
+                        <h:outputText value="#{usuario.idUsuario}" />
+                    </p:column>
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Year"/>
-                    </f:facet>
-                    <h:outputText value="#{usuario.nombreUsuario}" />
-                </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Year"/>
+                        </f:facet>
+                        <h:outputText value="#{usuario.nombreUsuario}" />
+                    </p:column>
 
-                <p:column>
-                    <f:facet name="header">
-                        <h:outputText value="Brand" />
-                    </f:facet>
-                    <h:outputText value="#{usuario.contrasena}" />
-                </p:column>
-            </p:dataTable>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Brand" />
+                        </f:facet>
+                        <h:outputText value="#{usuario.contrasena}" />
+                    </p:column>
+                </p:dataTable>
 
 
-        </h:form>
+            </h:form>
         </h:body>
     </f:view>
 </html>

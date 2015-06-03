@@ -22,6 +22,8 @@
         </managed-property>
     </managed-bean>
     
+    
+    
      <managed-bean>
         <managed-bean-name>personasBean</managed-bean-name>
         <managed-bean-class>com.ues.bean.PersonasBean</managed-bean-class>

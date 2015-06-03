@@ -2,7 +2,9 @@ package com.ues.bean;
 
 import com.ues.dao.UsuariosDao;
 import com.ues.exception.DAOException;
+import com.ues.model.TipoUsuario;
 import com.ues.model.Usuario;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -15,11 +17,12 @@ import javax.faces.event.ActionEvent;
  * @author Airy
  */
 public class UsuariosBean {
+
     private Usuario usuario = new Usuario();
     private List<Usuario> miLista;
     private UsuariosDao usuariosDao;
-    
-    public UsuariosBean(){
+
+    public UsuariosBean() {
     }
 
     public List<Usuario> getMiLista() {
@@ -32,17 +35,24 @@ public class UsuariosBean {
     }
 
     public void addUsuario(ActionEvent actionEvent) {
-        addMessage("Welcome to Primefaces!!");
-      /*  System.out.println("sdfdsf");
-                Usuario us=new Usuario();
-                us.setIdUsuario(4);
-                us.setNombreUsuario("chali2");
-                us.setContrasena("123");
-                usuariosDao.crearUsuario(us);*/
- 
- 
-	}
-    
+        try {
+            Usuario us = new Usuario();
+            TipoUsuario tus = new TipoUsuario();
+            tus.setIdTipoUsuario(usuario.getTipoUsuario().getIdTipoUsuario());
+            us.setIdUsuario(usuario.getIdUsuario());
+            us.setNombreUsuario(usuario.getNombreUsuario());
+            us.setContrasena(usuario.getContrasena());
+            us.setFechaCreacion(new Date());
+            us.setTipoUsuario(tus);
+           // us.setTipoUsuario(tus);
+            usuariosDao.crearUsuario(us);
+            addMessage("Insertado Id:!!" + usuario.getIdUsuario());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void setMiLista(List<Usuario> miLista) {
         this.miLista = miLista;
     }
@@ -70,7 +80,7 @@ public class UsuariosBean {
     }
 
     private void addMessage(String welcome_to_Primefaces) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "xD",  null);
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, welcome_to_Primefaces, null);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 }

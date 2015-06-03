@@ -26,10 +26,11 @@
             <h3>Ejemplo de JSF 2.0, Spring 3, Hibernate 3, MySQL</h3>
             <h4>Lista de usuarios del sistema</h4>
 
+
             <h:form id="formInsertar">
                 <p:panelGrid columns="2">
 
-                    <!--<p:outputLabel value="Id del usuario" />
+                    <p:outputLabel value="Id del usuario" />
                     <p:inputText value="#{usuariosBean.usuario.idUsuario}"/>
 
                     <p:outputLabel value="Nombre del usuario" />
@@ -39,14 +40,13 @@
                     <p:inputText value="#{usuariosBean.usuario.contrasena}"/>
 
                     <p:outputLabel value="Tipo Usuario" />
-                    <p:inputText value="#{usuariosBean.usuario.tipoUsuario}"/>
+                    <p:inputText value="#{usuariosBean.usuario.tipoUsuario.idTipoUsuario}"/>
                     
-                    <p:outputLabel value="fecha Creacion" />
-                    <p:inputText value="#{usuariosBean.usuario.fechaCreacion}"/>-->
 
                 </p:panelGrid>
 
-                <p:commandButton actionListener="#{usuariosBean.addUsuario}" value="Ingresar Usuario"/>
+                <p:growl id="growl2" life="2000" />
+                <p:commandButton id="ajax" update="growl2"  actionListener="#{usuariosBean.addUsuario}" value="Ingresar Usuario" styleClass="ui-priority-primary" />
 
             </h:form>
 

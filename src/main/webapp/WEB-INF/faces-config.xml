@@ -22,4 +22,16 @@
         </managed-property>
     </managed-bean>
     
+     <managed-bean>
+        <managed-bean-name>personasBean</managed-bean-name>
+        <managed-bean-class>com.ues.bean.PersonasBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>personasDao</property-name>
+            <property-class>com.ues.dao.PersonasDao</property-class>
+            <value>#{personasDao}</value>
+        </managed-property>
+    </managed-bean>
+    
 </faces-config>

@@ -19,6 +19,7 @@ import javax.faces.event.ActionEvent;
 public class UsuariosBean {
 
     private Usuario usuario = new Usuario();
+    private int tipoUsuarioT;
     private List<Usuario> miLista;
     private UsuariosDao usuariosDao;
 
@@ -38,16 +39,16 @@ public class UsuariosBean {
         try {
             Usuario us = new Usuario();
             TipoUsuario tus = new TipoUsuario();
-            tus.setIdTipoUsuario(usuario.getTipoUsuario().getIdTipoUsuario());
+            tus.setIdTipoUsuario(tipoUsuarioT);
             us.setIdUsuario(usuario.getIdUsuario());
             us.setNombreUsuario(usuario.getNombreUsuario());
             us.setContrasena(usuario.getContrasena());
             us.setFechaCreacion(new Date());
             us.setTipoUsuario(tus);
-           // us.setTipoUsuario(tus);
             usuariosDao.crearUsuario(us);
             addMessage("Insertado Id:!!" + usuario.getIdUsuario());
         } catch (Exception e) {
+            addMessage("Error Id:!!" + usuario.getIdUsuario()+" "+ e.getMessage());
             e.printStackTrace();
         }
 
@@ -83,4 +84,19 @@ public class UsuariosBean {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, welcome_to_Primefaces, null);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
+
+    /**
+     * @return the tipoUsuarioT
+     */
+    public int getTipoUsuarioT() {
+        return tipoUsuarioT;
+    }
+
+    /**
+     * @param tipoUsuarioT the tipoUsuarioT to set
+     */
+    public void setTipoUsuarioT(int tipoUsuarioT) {
+        this.tipoUsuarioT = tipoUsuarioT;
+    }
+
 }

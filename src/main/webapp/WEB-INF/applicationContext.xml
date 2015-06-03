@@ -7,7 +7,7 @@
 
     <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" /> 
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL" /> 
         <property name="username" value="inventario"/>
         <property name="password" value="inventario"/>
     </bean>
@@ -18,8 +18,14 @@
         <property name="mappingResources">
             <list>
     <!--
+    Usuario
 INSERT INTO usuario VALUES (2,1,'Joy','123','02-02-2015',null);
 INSERT INTO usuario VALUES (3,1,'Samuel','123','02-02-2015',null);
+commit;
+
+Persona
+
+insert into persona VALUES (1,2,'Ligia','Aguilar','F','514541541','65465464','18/10/1988','Mi casa','ligia.jocelyn@gmail.com');
 commit;
                 -->
                 <value>Transaccion.hbm.xml</value>

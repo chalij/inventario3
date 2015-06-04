@@ -1,6 +1,6 @@
 package com.ues.bean;
 
-import static com.sun.javafx.logging.PulseLogger.addMessage;
+
 import com.ues.dao.PersonasDao;
 import com.ues.model.Persona;
 import com.ues.model.Usuario;

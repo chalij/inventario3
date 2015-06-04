@@ -29,6 +29,13 @@
 
             <h:form id="formInsertar">
                 <p:panelGrid columns="2">
+                    <p:outputLabel for="console" value="Basic:" />
+                    <p:selectOneMenu id="console" value="sdfgds" style="width:125px">
+                        <f:selectItem itemLabel="Select One" itemValue="" />
+                        <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+                        <f:selectItem itemLabel="PS4" itemValue="PS4" />
+                        <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+                    </p:selectOneMenu>
 
                     <p:outputLabel value="Id del usuario" />
                     <p:inputText value="#{usuariosBean.usuario.idUsuario}"/>
@@ -41,7 +48,7 @@
 
                     <p:outputLabel value="Tipo Usuario" />
                     <p:inputText value="#{usuariosBean.tipoUsuarioT}"/>
-                    
+
 
                 </p:panelGrid>
 
@@ -78,10 +85,39 @@
                         </f:facet>
                         <h:outputText value="#{usuario.contrasena}" />
                     </p:column>
+
+
+                    <p:column headerText="Modificar">
+                        <p:commandButton value="Modificar" oncomplete="dlgmodificar.show()" update=":formInsertar2">
+                            <f:setPropertyActionListener target="" value="#{usuario}" />
+                        </p:commandButton>
+                    </p:column>
+
+                    <p:column headerText="Eliminar">
+                        <p:commandButton value="Eliminar" oncomplete="dlgEliminar.show()" update=":formEliminar">
+                            <f:setPropertyActionListener target="" value="#{usuario}" />
+                        </p:commandButton>
+                    </p:column>
                 </p:dataTable>
 
-
             </h:form>
+            <p:dialog id="dlg2" header="Eliminar Usuario"
+                      showEffect="explode" hideEffect="explode"
+                      widgetVar="dlgEliminar" modal="true" resizable="false" minWidth="200">
+                <h:form id="formEliminar">
+
+                    <h:outputText value="¿Desea Eliminar?" />
+                </h:form>
+            </p:dialog>
+            
+            <p:dialog id="dlg" header="Eliminar Usuario"
+                      showEffect="explode" hideEffect="explode"
+                      widgetVar="dlgEliminar" modal="true" resizable="false" minWidth="200">
+                <h:form id="formInsertar2">
+
+                    <h:outputText value="¿Desea Eliminar?" />
+                </h:form>
+            </p:dialog>
         </h:body>
     </f:view>
 </html>

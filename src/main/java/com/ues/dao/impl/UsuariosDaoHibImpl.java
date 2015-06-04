@@ -25,7 +25,7 @@ public class UsuariosDaoHibImpl extends CustomHibernateDaoSupport implements Usu
     }
 
     public List<Usuario> listaUsuarios() throws DAOException {
-        List<Usuario> lista = getHibernateTemplate().find("from Usuario");
+        List<Usuario> lista = getHibernateTemplate().find("from Usuario order by idUsuario");
         return lista;
     }
 

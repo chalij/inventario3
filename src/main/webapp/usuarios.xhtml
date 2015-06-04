@@ -53,12 +53,12 @@
                 </p:panelGrid>
 
                 <p:growl id="growl2" life="2000" />
-                <p:commandButton id="ajax" update="growl2"  actionListener="#{usuariosBean.addUsuario}" value="Ingresar Usuario" styleClass="ui-priority-primary" />
+                <p:commandButton id="ajax" update="growl2" onsuccess=":formTable"  actionListener="#{usuariosBean.addUsuario}" value="Ingresar Usuario" styleClass="ui-priority-primary" />
 
             </h:form>
 
 
-            <h:form>
+            <h:form id="formTable">
                 <p:dataTable id="tbl" var="usuario" value="#{usuariosBean.miLista}"
                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
                              paginator="true" rows="10" style="margin-bottom:20px">

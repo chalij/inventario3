@@ -24,100 +24,50 @@
         <h:body>
             <br/>
             <h3>Ejemplo de JSF 2.0, Spring 3, Hibernate 3, MySQL</h3>
-            <h4>Lista de usuarios del sistema</h4>
-            <h:form id="form">
-                <div>
-                    <h:dataTable value="#{personasBean.miLista}" var="persona" styleClass="tabla" >
-                        <h:column>
-                            <f:facet name="header">
-                                Id
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{persona.idPersona}"/>
-                            </div>
-                        </h:column>
-                       
-                        
-                        
-                        <h:column>
-                            <f:facet name="header">
-                                Nombre
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{persona.nombre}"/>
-                            </div>
-                        </h:column>
+            <h4>Lista de personas del sistema</h4>
+            
+            
+            <h:form id="formInsertarPersonas">
+                <p:panelGrid columns="2">
+
+                    <p:outputLabel value="Id" />
+                    <p:inputText value="#{personasBean.persona.idPersona}"/>
+                    <p:outputLabel value="Id de Usuario" />
+                    <p:inputText value="#{personasBean.idusuarioU}"/>
+
+                    <p:outputLabel value="Nombre" />
+                    <p:inputText value="#{personasBean.persona.nombre}"/>
+
+                    <p:outputLabel value="Apellido" />
+                    <p:inputText value="#{personasBean.persona.apellido}"/>
+
+                    <p:outputLabel value="Genero" />
+                    <p:inputText value="#{personasBean.persona.genero}"/>
                     
+                    <p:outputLabel value="Dui" />
+                    <p:inputText value="#{personasBean.persona.dui}"/>
                     
+                    <p:outputLabel value="Nit" />
+                    <p:inputText value="#{personasBean.persona.nit}"/>
                     
-                         <h:column>
-                            <f:facet name="header">
-                                Apellido
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{persona.apellido}"/>
-                            </div>
-                        </h:column>
+                    <p:outputLabel value="Dirección" />
+                    <p:inputText value="#{personasBean.persona.direccion}"/>
                     
-                        
-                        
-                        <h:column>
-                            <f:facet name="header">
-                                Genero
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{persona.genero}"/>
-                            </div>
-                        </h:column>
-                        
-                        
+                    <p:outputLabel value="Correo" />
+                    <p:inputText value="#{personasBean.persona.correo}"/>
+                   
+                    <p:outputLabel value="Fecha de Nacimiento" />
+                    <p:inputText value="#{personasBean.fechaV}"/>
+
+
                     
-                        <h:column>
-                            <f:facet name="header">
-                                DUI
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{persona.dui}"/>
-                            </div>
-                        </h:column>
-                    
-                        
-                        <h:column>
-                            <f:facet name="header">
-                                NIT
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{persona.nit}"/>
-                            </div>
-                        </h:column>
-                        
-                        
-                         <h:column>
-                            <f:facet name="header">
-                                Direccion
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{persona.direccion}"/>
-                            </div>
-                        </h:column>
-                        
-                        
-                        
-                        
-                         <h:column>
-                            <f:facet name="header">
-                                Correo
-                            </f:facet>
-                            <div class="celda">
-                                <h:outputText value="#{persona.correo}"/>
-                            </div>
-                        </h:column>
-                         </h:dataTable>
-                </div>
+               </p:panelGrid>
+
+                <p:growl id="growl2" life="2000" />
+                <p:commandButton id="ajax" update="growl2"  actionListener="#{personasBean.addPersona}" value="Ingresar Persona" styleClass="ui-priority-primary" />
+
             </h:form>
-            
-            
-            
+   
         <h:form>
             <p:dataTable id="tbl" var="persona" value="#{personasBean.miLista}"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
@@ -181,6 +131,13 @@
                         <h:outputText value="Correo"/>
                     </f:facet>
                     <h:outputText value="#{persona.correo}" />
+                </p:column>
+                
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha Nacimento"/>
+                    </f:facet>
+                    <h:outputText value="#{persona.fechaNac.day+1}/#{persona.fechaNac.month+1}/#{persona.fechaNac.year}" />
                 </p:column>
 
                
